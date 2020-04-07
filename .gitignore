@@ -21,3 +21,9 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+*.iml

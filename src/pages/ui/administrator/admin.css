@@ -1,0 +1,41 @@
+.steps-content {
+    margin-top: 16px;
+    border: 1px dashed #e9e9e9;
+    border-radius: 6px;
+    background-color: #fafafa;
+    min-height: 500px;
+    text-align: center;
+    padding-top: 140px;
+}
+
+.steps-action {
+    margin-top: 24px;
+}
+
+.input-action{
+    width: 200px;
+}
+.steps-content1 {
+    margin-top: 16px;
+    border: 1px dashed #e9e9e9;
+    border-radius: 6px;
+    min-height: 500px;
+    padding-top: 80px;
+}
+.steps-content2 {
+    margin-top: 16px;
+    border: 1px dashed #e9e9e9;
+    border-radius: 6px;
+    background-color: #fafafa;
+    min-height: 500px;
+    text-align: center;
+    padding-top: 180px;
+}
+.toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    padding: 0 24px;
+    line-height: 64px;
+}

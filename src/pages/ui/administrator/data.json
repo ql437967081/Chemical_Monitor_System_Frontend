@@ -1,0 +1,25 @@
+{
+  "name": "产品A：100",
+  "children": [
+    {
+      "name": "产品B：30",
+      "children": [
+        {"name": "产品C：30"}
+      ]
+    },
+    {
+      "name": "产品D：50",
+      "children": [
+        {"name": "产品E：20"},
+        {"name": "产品F：20"},
+        {"name": "产品G：10"}
+      ]
+    },
+    {
+      "name": "产品H：20",
+      "children": [
+        {"name": "产品I：20"}
+      ]
+    }
+  ]
+}
