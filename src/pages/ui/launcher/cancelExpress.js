@@ -1,6 +1,6 @@
 import React from "react";
 import {withRouter} from "react-router";
-import {Button, Card, Form, InputNumber, message, Modal} from "antd";
+import {Alert, Button, Card, Form, InputNumber, message, Modal} from "antd";
 import {checkTokenExpiration, get, post} from "../../../request";
 import {backend_url} from "../../../config/httpRequest1";
 
@@ -136,14 +136,16 @@ class CancelExpress extends React.Component {
         const formItemLayoutWithOutLabel = {
             wrapperCol: { span: 18, offset: 6 }
         };
+        const disabled = status === 2 || status === 3;
         return [
             <Form.Item key={0} label={'当前状态'}>{STATUS_TYPE[status]}</Form.Item>,
             <Form.Item key={1} label={'出库仓库'}>{outputStoreName}</Form.Item>,
             <Form.Item key={2} label={'入库仓库'}>{inputStoreName}</Form.Item>,
             <Form.Item key={3} {...formItemLayoutWithOutLabel}>
-                <Button type="primary" onClick={() => this.showConfirm()}>
+                <Button type="primary" onClick={() => this.showConfirm()} disabled={disabled}>
                     取消物流单
                 </Button>
+                { disabled ? <Alert message={`${STATUS_TYPE[status]}物流单不能取消`} type={"error"} style={{width: 180}} /> : null }
             </Form.Item>
         ];
     };
