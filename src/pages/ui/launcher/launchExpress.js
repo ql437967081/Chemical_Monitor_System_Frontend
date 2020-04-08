@@ -117,7 +117,7 @@ class LaunchExpress extends React.Component {
         }).then(function (res) {
             if (checkTokenExpiration(res, this.props.history))
                 return;
-            const expressVO = res.data.data;
+            const expressVO = res.data;
             if (expressVO.code === 1) {
                 message.success('本次物流发起成功');
                 // todo:
@@ -129,7 +129,7 @@ class LaunchExpress extends React.Component {
                     allProducts: []
                 })
             } else {
-                message.error('服务器繁忙，请稍后重试');
+                message.error(expressVO.message);
             }
         }.bind(this)).catch(function (err) {
             console.log(err);
