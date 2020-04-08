@@ -132,7 +132,8 @@ class LaunchExpress extends React.Component {
                 message.error('服务器繁忙，请稍后重试');
             }
         }.bind(this)).catch(function (err) {
-            console.log(err)
+            console.log(err);
+            console.log(err.response);
         });
     };
 

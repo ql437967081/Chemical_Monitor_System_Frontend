@@ -113,7 +113,7 @@ class ExpressStoreSelectForm extends React.Component {
 
     render() {
         const { getFieldDecorator } = this.props.form;
-        const { storeOut, storeIn } = this.props;
+        const { storeOut, storeIn, getHistory } = this.props;
         return (
             <Form>
                 <Form.Item>
@@ -121,7 +121,7 @@ class ExpressStoreSelectForm extends React.Component {
                         validateTrigger: ['onChange'],
                         initialValue: { storeOut, storeIn },
                         rules: [{ validator: this.check }]
-                    })(<StoresSelect />)}
+                    })(<StoresSelect getHistory={getHistory} />)}
                 </Form.Item>
             </Form>
         );

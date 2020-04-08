@@ -98,11 +98,12 @@ class RawOut extends React.Component {
                 return;
             const batchVO = res.data;
             const { code, type }= batchVO;
+            const { form } = this.props;
+            form.setFieldsValue({ storeId: 0 });
             if (code === 0 || type !== "生产") {
+                this.setState({ stores: [] });
                 return callback('不存在该生产批次');
             } else if (code === 1) {
-                const { form } = this.props;
-                form.setFieldsValue({ storeId: 0 });
                 get(batchUrl + 'get_batch_in_stores/' + value).then(function (res) {
                     const stores = [];
                     for (let store of res.data) {
