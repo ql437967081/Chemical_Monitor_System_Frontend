@@ -76,7 +76,7 @@ class ExpressOut extends React.Component {
                 get(baseUrl + 'get_express/' + expressId).then(function (res) {
                     if (checkTokenExpiration(res, this.props.history))
                         return;
-                    const expressVO = res.data.data;
+                    const expressVO = res.data;
                     const { code, status } = expressVO;
                     if (code === 1 && status % 4 === 0) {
                         this.setState({ expressId });
