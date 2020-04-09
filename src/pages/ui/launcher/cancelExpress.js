@@ -111,15 +111,14 @@ class CancelExpress extends React.Component {
                 post(baseUrl + 'reverse_express/' + expressId, undefined).then(function (res) {
                     if (checkTokenExpiration(res, this.props.history))
                         return;
-                    const data = res;
-                    if (data.code === 200) {
+                    if (res.code === 200) {
                         message.success('取消物流单成功');
-                        console.log(data.data);
+                        console.log(res.data);
                     } else {
-                        message.error(data.msg);
+                        message.error(res.msg);
                     }
                 }.bind(this)).catch(function (err) {
-                    console.log(err)
+                    console.log(err);
                 });
             },
             onCancel: () => {
