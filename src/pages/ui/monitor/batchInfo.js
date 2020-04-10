@@ -9,6 +9,9 @@ const baseUrl = backend_url + 'history/';
 const { Search } = Input;
 const sep = ' ';
 
+const aaaaa = {"nodes":[{"batchId":4,"productName":null,"storeName":null,"type":2,"batchType":"入园"},{"batchId":4,"productName":"氯化钠","storeName":"固体仓库","type":1,"batchType":null},{"batchId":4,"productName":"氯化钠","storeName":"隆鑫仓库","type":1,"batchType":null},{"batchId":4,"productName":"氯化钠","storeName":"华大仓库","type":1,"batchType":null}],"links":[{"from":0,"to":1,"number":700.0},{"from":1,"to":2,"number":70.0},{"from":1,"to":2,"number":70.0},{"from":1,"to":3,"number":60.0}]};
+
+
 class BatchInfo extends React.Component{
 
     state = {
@@ -58,22 +61,31 @@ class BatchInfo extends React.Component{
         const { nodes, links } = graph;
         const parsedNodes = [];
         const parsedLinks = [];
+        const nodeSet = new Set();
         for (let node of nodes) {
             const { batchId, productName, storeName, type, batchType } = node;
             const batchName = '批次' + batchId;
             if (type === 1) {
                 node['name'] = batchName
-                    + sep + '产品' + productName
-                    + sep + '仓库' + storeName;
+                    + sep + productName
+                    + sep + storeName;
             } else if (type === 2) {
                 node['name'] = batchType === '生产' ? batchName : batchType + batchName;
             }
+            let { name } = node;
+            while (nodeSet.has(name)) {
+                name = name + ' ';
+                node['name'] = name;
+            }
+            nodeSet.add(name);
             parsedNodes.push({ name: node['name'] });
         }
         for (let link of links) {
             const { from, to, number } = link;
             parsedLinks.push({ source: nodes[from]['name'], target: nodes[to]['name'], value: number });
         }
+        console.log('nodes', parsedNodes);
+        console.log('links', parsedLinks);
         return { data: parsedNodes, links: parsedLinks };
     };
 
@@ -125,11 +137,19 @@ class BatchInfo extends React.Component{
         };
     };
 
+    checkEmptyGragh = graph => {
+        if (!graph)
+            return true;
+        const { nodes, links } = graph;
+        return nodes.length === 0 || links.length === 0;
+
+    };
+
     render() {
         const { searchLoading, raws, products } = this.state;
-        const rawsChart = raws === null ? null :
+        const rawsChart = this.checkEmptyGragh(raws) ? null :
             (<ReactEcharts option={this.getOption(raws, '原料历史')} />);
-        const productsChart = products === null ? null :
+        const productsChart = this.checkEmptyGragh(products) ? null :
             (<ReactEcharts option={this.getOption(products, '产品用途')} />);
         return (
             <div>
@@ -146,10 +166,13 @@ class BatchInfo extends React.Component{
                     </Form>
                     {rawsChart}
                     {productsChart}
+
                 </Card>
             </div>
         );
     }
 }
+
+//<ReactEcharts option={this.getOption(aaaaa, '原料历史')} />
 
 export default withRouter(BatchInfo);
