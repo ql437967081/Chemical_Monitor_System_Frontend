@@ -93,7 +93,7 @@ export default class ThroughputTable extends React.Component {
                 title: TIME_TYPES[timeType],
                 dataIndex: 'time',
                 key: 'time',
-                width: 100,
+                width: 120,
                 fixed: 'left'
             },
             {
@@ -126,7 +126,7 @@ export default class ThroughputTable extends React.Component {
                 dataSource={data}
                 bordered
                 scroll={{x: true}}
-                rowClassName={(record, index) => index === len ? 'lastRowStyle' : ''}
+                rowClassName={record => record.key === len ? 'lastRowStyle' : ''}
             />
         );
     }
