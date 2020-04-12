@@ -61,7 +61,7 @@ class RawOut extends React.Component {
         }).then(function (res) {
             const batchVO = res.data;
             const { code, type }= batchVO;
-            if (code === 0 || type !== "生产") {
+            if (code === 0 || type !== 0) {
                 return callback('不存在该生产批次');
             } else if (code === 1) {
                 const { form } = this.props;
@@ -100,7 +100,7 @@ class RawOut extends React.Component {
             const { code, type }= batchVO;
             const { form } = this.props;
             form.setFieldsValue({ storeId: 0 });
-            if (code === 0 || type !== "生产") {
+            if (code === 0 || type !== 0) {
                 this.setState({ stores: [] });
                 return callback('不存在该生产批次');
             } else if (code === 1) {

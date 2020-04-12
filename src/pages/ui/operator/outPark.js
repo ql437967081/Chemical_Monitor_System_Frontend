@@ -67,7 +67,7 @@ class OutPark extends React.Component {
                 }).then(function (res) {
                     const batchVO = res.data;
                     const { code, type }= batchVO;
-                    if (code === 1 && type === "出园") {
+                    if (code === 1 && type === 2) {
                         this.setState({ batchId });
                     } else {
                         message.error('请输入正确的出园批次');
@@ -80,7 +80,7 @@ class OutPark extends React.Component {
                         return;
                     const batchVO = res.data;
                     const { code, type }= batchVO;
-                    if (code === 1 && type === "出园") {
+                    if (code === 1 && type === 2) {
                         this.setState({ batchId });
                     } else {
                         message.error('请输入正确的出园批次');

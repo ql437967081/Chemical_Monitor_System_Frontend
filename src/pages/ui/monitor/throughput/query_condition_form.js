@@ -355,7 +355,7 @@ class QueryConditionForm extends React.Component{
                     this.setState({ queryLoading: false });
                 }.bind(this));*/
                 post(baseUrl, queryRequest).then(function (res) {
-                    if (checkTokenExpiration(res, this.props.history))
+                    if (checkTokenExpiration(res, this.props.getHistory()))
                         return;
                     const data = res;
                     //console.log(data);

@@ -9,8 +9,7 @@ const baseUrl = backend_url + 'history/';
 const { Search } = Input;
 const sep = ' ';
 
-const aaaaa = {"nodes":[{"batchId":4,"productName":null,"storeName":null,"type":2,"batchType":"入园"},{"batchId":4,"productName":"氯化钠","storeName":"固体仓库","type":1,"batchType":null},{"batchId":4,"productName":"氯化钠","storeName":"隆鑫仓库","type":1,"batchType":null},{"batchId":4,"productName":"氯化钠","storeName":"华大仓库","type":1,"batchType":null}],"links":[{"from":0,"to":1,"number":700.0},{"from":1,"to":2,"number":70.0},{"from":1,"to":2,"number":70.0},{"from":1,"to":3,"number":60.0}]};
-
+const BATCH_TYPE = ['', '入园', '出园', '销毁'];
 
 class BatchInfo extends React.Component{
 
@@ -70,7 +69,7 @@ class BatchInfo extends React.Component{
                     + sep + productName
                     + sep + storeName;
             } else if (type === 2) {
-                node['name'] = batchType === '生产' ? batchName : batchType + batchName;
+                node['name'] = BATCH_TYPE[batchType] + batchName;
             }
             let { name } = node;
             while (nodeSet.has(name)) {
@@ -172,7 +171,5 @@ class BatchInfo extends React.Component{
         );
     }
 }
-
-//<ReactEcharts option={this.getOption(aaaaa, '原料历史')} />
 
 export default withRouter(BatchInfo);

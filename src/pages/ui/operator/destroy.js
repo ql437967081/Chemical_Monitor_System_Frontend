@@ -67,7 +67,7 @@ class Destroy extends React.Component {
                 }).then(function (res) {
                     const batchVO = res.data;
                     const { code, type }= batchVO;
-                    if (code === 1 && type === "销毁") {
+                    if (code === 1 && type === 3) {
                         this.setState({ batchId });
                     } else {
                         message.error('请输入正确的销毁批次');
@@ -80,7 +80,7 @@ class Destroy extends React.Component {
                         return;
                     const batchVO = res.data;
                     const { code, type }= batchVO;
-                    if (code === 1 && type === "销毁") {
+                    if (code === 1 && type === 3) {
                         this.setState({ batchId });
                     } else {
                         message.error('请输入正确的销毁批次');

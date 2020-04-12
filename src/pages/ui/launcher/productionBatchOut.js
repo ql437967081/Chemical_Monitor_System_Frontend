@@ -58,7 +58,7 @@ class ProductionBatchOut extends React.Component{
         }).then(function (res) {
             const batchVO = res.data;
             const { code, type, productionLineId }= batchVO;
-            if (code === 0 || type !== "生产") {
+            if (code === 0 || type !== 0) {
                 return callback('不存在该生产批次');
             } else if (code === 1) {
                 axios({
@@ -87,7 +87,7 @@ class ProductionBatchOut extends React.Component{
                 return;
             const batchVO = res.data;
             const { code, type, productionLineId }= batchVO;
-            if (code === 0 || type !== "生产") {
+            if (code === 0 || type !== 0) {
                 return callback('不存在该生产批次');
             } else if (code === 1) {
                 get(productionLineUrl + 'get_production_line/' + productionLineId).then(function (res) {
