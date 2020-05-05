@@ -6,6 +6,8 @@ import {backend_url} from "../../../config/httpRequest1";
 
 const inoutUrl = backend_url + 'inout/';
 
+const BATCH_TYPE = ['生产', '入园', '出园', '销毁'];
+
 class ProductInForm extends React.Component {
 
     state = {
@@ -76,7 +78,7 @@ class ProductInForm extends React.Component {
 
         return (
             <Form layout={"inline"} onSubmit={this.handleSubmit}>
-                <Form.Item label={`${batchType}批次`}>
+                <Form.Item label={`${BATCH_TYPE[batchType]}批次`}>
                     <Alert message={batchId} />
                 </Form.Item>
                 <Form.Item label={'仓库'}>
