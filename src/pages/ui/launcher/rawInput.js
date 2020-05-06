@@ -21,7 +21,7 @@ export default class RawInput extends React.Component {
         const stores = [];
         const changedState = { batches: [], maxNum: 0 };
         if (casId === 0 || casId === undefined) {
-            this.setState({ stores, ...changedState })
+            this.setState({ stores, ...changedState });
             return
         }
         /*axios({
@@ -91,7 +91,7 @@ export default class RawInput extends React.Component {
 
     handleStoreChange = store => {
         this.triggerChange({ store, product: 0, num: 0, maxNum: 0 });
-        const { casId } = this.state;
+        const { casId } = this.props.value;
         this.searchBatch(store, casId)
     };
 
