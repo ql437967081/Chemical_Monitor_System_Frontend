@@ -3,6 +3,7 @@ import Menuconfig from '../../config/adminMenu'
 import {Menu,Icon} from 'antd';
 import './index.less'
 import {NavLink} from 'react-router-dom'
+import systemName from '../../config/systemName';
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 
@@ -33,14 +34,14 @@ export default class AdminNav extends React.Component{
         return(
             <div>
                 <div className="logo">
-                    <h1>危害化学品追踪系统</h1>
+                    <h1>{systemName}</h1>
                 </div>
                 <Menu theme="dark">
                     {/* <SubMenu key="sub1" title={<span> <Icon type="appstore" /> <span>产品管理</span> </span>}></SubMenu>
                     <SubMenu key="sub2" title={<span> <Icon type="appstore" /> <span>发货</span> </span>}></SubMenu>
                     <SubMenu key="sub3" title={<span> <Icon type="appstore" /> <span>发货记录</span> </span>}></SubMenu> */}
                     {this.state.menuTreeNode}
-                   
+
                 </Menu>
             </div>
         )

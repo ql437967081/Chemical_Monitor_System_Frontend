@@ -3,6 +3,7 @@ import Menuconfig from '../../config/monitorMenu'
 import {Menu,Icon} from 'antd';
 import './index.less'
 import {NavLink} from 'react-router-dom'
+import systemName from '../../config/systemName';
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 
@@ -33,7 +34,7 @@ export default class MonitorNav extends React.Component{
         return(
             <div>
                 <div className="logo">
-                    <h1>危害化学品追踪系统</h1>
+                    <h1>{systemName}</h1>
                 </div>
                 <Menu theme="dark">
                     {this.state.menuTreeNode}

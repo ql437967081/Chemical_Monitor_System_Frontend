@@ -5,6 +5,7 @@ import {withRouter} from 'react-router'
 import {post} from "../../request";
 import {USER_ROLE} from "../../config/userRole";
 import {backend_url} from "../../config/httpRequest1";
+import systemName from '../../config/systemName';
 
 const FormItem = Form.Item;
 
@@ -26,7 +27,7 @@ class Index extends React.Component{
                     sessionStorage.setItem('loginRole', loginRole);
                     sessionStorage.setItem('loginId', userId);
                     sessionStorage.setItem('loginName', name);
-                    message.success(`欢迎${name}进入危害化学品追踪系统`);
+                    message.success(`欢迎${name}进入${systemName}`);
                     history.push(`/${loginRole}`);
                 }).catch(function (err) {
                     console.log(err);
